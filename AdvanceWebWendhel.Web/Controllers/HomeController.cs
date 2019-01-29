@@ -48,7 +48,8 @@ namespace AdvanceWebWendhel.Web.Controllers
             result.PageCount = pageCount;
             result.PageSize = pageSize;
             result.QueryCount = queryCount;
-            result.CurrentPage = pageIndex;
+            result.PageIndex = pageIndex;
+            result.Keyword = keyword;
 
 
             return View(new IndexViewModel()
@@ -138,7 +139,7 @@ namespace AdvanceWebWendhel.Web.Controllers
             var user = this._context.Users.FirstOrDefault(u => u.Id == userId);
             if (user != null)
             {
-                this._context.Users.Remove(user);
+                this._context.Users.Remove(user);   
                 this._context.SaveChanges();
             }
             return RedirectToAction("index");
@@ -180,14 +181,14 @@ namespace AdvanceWebWendhel.Web.Controllers
             return RedirectToAction("index");
         }
 
-        public IActionResult About()
+        public IActionResult Category()
         {
             ViewData["Message"] = "Your application description page.";
 
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Product()
         {
             ViewData["Message"] = "Your contact page.";
 
